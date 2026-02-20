@@ -3,9 +3,8 @@
 基于可解释视觉代理指标（head pose / face orientation）的驾驶分心风险检测最小可用版本。
 
 > 设计原则：
-> - **不做身份识别**，不做人脸身份匹配。
-> - 输入应来自公开视频或你自录且不含个人敏感信息的数据。
-> - 输出用于行为风险分析，不用于个人身份判断。
+> - 输入应来自公开视频或你自录且不含个人敏感信息的数据
+> - 输出用于行为风险分析，不用于个人身份判断
 
 ## 功能
 
@@ -45,8 +44,7 @@ python -m distraction_tool analyze path/to/video.mp4 --out outputs/ --threshold 
 - `--threshold`：事件阈值，默认 `2.0`
 - `--clip`：启用高风险片段切出（依赖 ffmpeg）
 
-## 方法说明（可解释）
-
+## 方法说明
 1. 使用 MediaPipe Face Mesh 提取人脸关键点。
 2. 用 `solvePnP` 估计头部姿态（yaw/pitch）。
 3. 将 `yaw/pitch + face_visible` 映射为风险分数：
